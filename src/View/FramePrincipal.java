@@ -5,7 +5,7 @@
  */
 package View;
 
-import java.util.ArrayList;
+import Model.Conexao;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -14,12 +14,14 @@ import java.util.Random;
  * @author ewert
  */
 public class FramePrincipal extends javax.swing.JFrame {
+    Conexao con = new Conexao();
 
     /**
      * Creates new form FramePrincipal
      */
     public FramePrincipal() {
         initComponents();
+          con.conectabanco();
     }
 
    

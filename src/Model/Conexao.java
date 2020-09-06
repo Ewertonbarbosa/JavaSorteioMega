@@ -5,17 +5,35 @@
  */
 package Model;
 
-/**
- *
- * @author ewert
- */
-public class Conexao {
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+
+public class Conexao {
+    public Statement stm =null; // prepara e realiza pesquisas no banco
+    public ResultSet rs =null; // armazena o resultado de uma pesquisa passada para o Statement
+    public Connection conection; // responsavel por realizar a conexao com o banco
+    
+    private String driver = "com.mysql.jdbc.Driver";
+    private String caminho = "jdbc:mysql://localhost:3306/banco_mega?useTimezone=true&serverTimezone=UTC&useSSL=false";
+    private String user = "root";
+    private String pass = "102030";
+    
+        
+    public void conectabanco() {
+        try {
+            Class.forName(driver);
+             conection = DriverManager.getConnection(caminho, user, pass); // realiza a conexao com o banco
+            JOptionPane.showMessageDialog(null, "Conectado!"); // mensagem de erro, caso ocorra algum
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Falha na conexão!\n" + ex);
+            
+        }
+        
+        
     }
     
 }
